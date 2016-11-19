@@ -59,7 +59,7 @@ ${DRUSH} archive-backup --destination=${backup_dir}/${site_name}-backup.tar \
     --tar-options="--exclude=.git" --overwrite
 
 echo 'creating database...'
-${DRUSH} sql-dump --gzip --result-file=${backup_dir}/${site_name}-$(date +%m-%d-%Y-%H-%M-%S).sql
+${DRUSH} sql-dump --gzip --result-file=${backup_dir}/${site_name}-$(date +%Y-%m-%d-%H-%M-%S).sql
 
 cd ${backup_dir}
 
@@ -71,7 +71,7 @@ fi
 echo "gzip archive..."
 
 ${GZIP} ${site_name}-backup.tar
-${MV} -f ${site_name}-backup.tar.gz ${site_name}-backup-$(date +%m-%d-%Y-%H-%M-%S).tgz
+${MV} -f ${site_name}-backup.tar.gz ${site_name}-backup-$(date +%Y-%m-%d-%H-%M-%S).tgz
 # ${LN} -sf ${site_name}-backup-$(date +%m-%d-%Y).tgz ${site_name}-backup.tar.gz
 ${LS} -lh;
 
