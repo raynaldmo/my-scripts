@@ -49,6 +49,10 @@ backup_dir=${backup_dir}/${site_name}
 if [ ! -d ${backup_dir} ]
 then
     ${MKDIR} ${backup_dir}
+    if [ $? -ne 0 ] ; then
+        echo "Couldn't create directory ${backup_dir}"
+        exit 2
+    fi
 fi
 
 # todo
