@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SASS=/Users/raynald/.nvm/versions/node/v10.11.0/bin/node-sass
+sass_dir=$1
+sass_components_dir=$2
+css_dir=$3
+
+usage () {
+  echo "Usage : sass-watch <sass_dir> <sass_components_dir> <css_dir>"
+  echo "example : sass-watch sass/ sass/components/ css/"
+  exit 1
+}
+
+if [ $# -ne 3 ]
+then
+  usage
+fi
+
+$SASS --watch $sass_dir $sass_components_dir --output $css_dir --source-map true --source-map-contents sass
