@@ -2,18 +2,17 @@
 
 SASS=/Users/raynald/.nvm/versions/node/v10.11.0/bin/node-sass
 sass_dir=$1
-sass_components_dir=$2
-css_dir=$3
+css_dir=$2
 
 usage () {
-  echo "Usage : sass-watch <sass_dir> <sass_components_dir> <css_dir>"
-  echo "example : sass-watch sass/ sass/components/ css/"
+  echo "Usage : sass-watch <sass_dir> <css_dir>"
+  echo "example : sass-watch sass/  css/"
   exit 1
 }
 
-if [ $# -ne 3 ]
+if [ $# -ne 2 ]
 then
   usage
 fi
 
-$SASS --watch $sass_dir $sass_components_dir --output $css_dir --source-map true --source-map-contents sass
+$SASS --watch --recursive $sass_dir --output $css_dir --source-map true --source-map-contents sass
